@@ -1,0 +1,35 @@
+﻿@model PDC.Entity.ParcelDetails
+@{
+    ViewBag.Title = "Departments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="dept-section">
+    <div class="dept-section-container">
+        <table id="dept">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Weight</th>
+                    <th>Sender Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Parcels != null && Model.Parcels.Parcel.Any())
+                {
+                    foreach (var item in Model.Parcels.Parcel)
+                    {
+                        <tr>
+                            <td>@item.Department</td>
+                            <td>@item.Weight</td>
+                            <td>@item.Sender.Name</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="3">No record found.</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
